@@ -467,7 +467,7 @@ void laserProgress(int y, int x, int c) {
 			a = y / 6;
 			b = x / 6;
 			Z[a * 5 + b] = 1;
-			
+
 			return;
 		}
 		else laserProgress(y, x + 1, 0);
@@ -658,17 +658,17 @@ void printBoard(int y, int x, int rex) {
 				if (j % 6 == 0) cout << " ";
 				else cout << "  ";
 			}
-			else if (i == 0 && j == 0) cout << "¦£";
-			else if (i == 0 && j == 30) cout << "¦¤";
-			else if (i == 30 && j == 0) cout << "¦¦";
-			else if (i == 30 && j == 30) cout << "¦¥";
-			else if (i == 0 && j % 6 == 0) cout << "¦¨";
-			else if (i == 30 && j % 6 == 0) cout << "¦ª";
-			else if (i % 6 == 0 && j == 0) cout << "¦§";
-			else if (i % 6 == 0 && j == 30) cout << "¦©";
-			else if (i % 6 == 0 && j % 6 == 0) cout << "¦«";
-			else if (i % 6 == 0) cout << "¦¡¦¡";
-			else if (j % 6 == 0) cout << "¦¢";
+			else if (i == 0 && j == 0) cout << "â”Œ";
+			else if (i == 0 && j == 30) cout << "â”";
+			else if (i == 30 && j == 0) cout << "â””";
+			else if (i == 30 && j == 30) cout << "â”˜";
+			else if (i == 0 && j % 6 == 0) cout << "â”¬";
+			else if (i == 30 && j % 6 == 0) cout << "â”´";
+			else if (i % 6 == 0 && j == 0) cout << "â”œ";
+			else if (i % 6 == 0 && j == 30) cout << "â”¤";
+			else if (i % 6 == 0 && j % 6 == 0) cout << "â”¼";
+			else if (i % 6 == 0) cout << "â”€â”€";
+			else if (j % 6 == 0) cout << "â”‚";
 			else {
 				if (board[i][j] == 0 || board[i][j] == 1) {
 					textColor(WHITE, BLACK);
@@ -726,19 +726,16 @@ void printBoard(int y, int x, int rex) {
 	cout << endl << endl << "Remenant :" << endl;
 	if (remenant.size()) {
 		for (int i = 0; i < remenant.size(); i += 1) {
-			if (i == 0) {
-				cout << "¦£";
-			}
-			else {
-				cout << "¦¨";
-			}
-			cout << "¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡";
+			if (i == 0) cout << "â”Œ";
+			else cout << "â”¬";
+			cout << "â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€";
 		}
-		cout << "¦¤" << endl;
+		cout << "â”" << endl;
+
 		for (int j = 0; j < 3; j += 1) {
 			for (int i = 0; i < remenant.size(); i += 1) {
 				textColor(WHITE, BLACK);
-				cout << "¦¢";
+				cout << "â”‚";
 
 				if (rex == i && j == 2) {
 					textColor(WHITE, DARKGREY);
@@ -760,18 +757,20 @@ void printBoard(int y, int x, int rex) {
 				}
 			}
 			textColor(WHITE, BLACK);
-			cout << "¦¢" << endl;
+			cout << "â”‚" << endl;
 		}
+
 		for (int i = 0; i < remenant.size(); i += 1) {
-			if (i == 0) cout << "¦¦";
-			else cout << "¦ª";
-			cout << "¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡";
+			if (i == 0) cout << "â””";
+			else cout << "â”´";
+			cout << "â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€";
 		}
-		cout << "¦¥" << endl;
+		cout << "â”˜" << endl;
 	}
 
 	cout << "Press \"Z\" key to end the Game." << endl;
 }
+
 
 int left(int x) {
 	if (x != 0) x -= 1;
@@ -897,33 +896,33 @@ int main() {
 	while (1) {
 		key = _getch();
 		switch (key) {
-		case LEFT: 
+		case LEFT:
 			if (!pivot) x = left(x);
 			else {
 				if (k != 0) k -= 1;
 			}
 			break;
 
-		case RIGHT: 
+		case RIGHT:
 			if (!pivot) x = right(x);
 			else {
 				if (k != remenant.size() - 1) k += 1;
 			}
 			break;
 
-		case UP: 
+		case UP:
 			if (!pivot) y = up(y);
 			break;
 
-		case DOWN: 
+		case DOWN:
 			if (!pivot) y = down(y);
 			break;
 
-		case Q: 
+		case Q:
 			if (!pivot) rotateQ(y, x, N);
 			break;
 
-		case E: 
+		case E:
 			if (!pivot) rotateE(y, x, N);
 			break;
 
